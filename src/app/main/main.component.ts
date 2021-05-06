@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -8,16 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   constructor() { }
-
+  searchQuery = new FormControl('test');
   synsets = [];
   //htmlterms = [];
   synonymsAmount = 'keine Suchanfrage';
-  query = 'test';
+  query;
+  
   ngOnInit(): void {
   }
 
   async getSynonyms() {
-
+    this.query = this.searchQuery.value;
     let url = 'https://www.openthesaurus.de/synonyme/search?q=' + this.query + '&format=application/json'; //load from server
     let response = await fetch(url);
     let responseAsJson = await response.json();
@@ -36,20 +38,21 @@ export class MainComponent implements OnInit {
           this.htmlterms.push(expression);
         }*/
     }
-  
+
 
     this.rendersynsets(this.synsets);
   }
 
   rendersynsets(synsets) {
     let container = document.getElementById('container');
-
-    //let synonymsAmount = document.getElementById('synonymsAmount');
-    //synonymsAmount.innerHTML = '&nbsp;' + synsets.length + '&nbsp;';
     this.synonymsAmount = synsets.length + ' Synonym-Sets';
     container.classList.remove('d-none');
 
-    //for loop in html
+    //for-loop in html
+  }
+
+  onSubmit() {
+    return this.searchQuery;
   }
 }
 

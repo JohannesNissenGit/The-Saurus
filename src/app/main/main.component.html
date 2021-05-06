@@ -1,3 +1,13 @@
+<!--<form (submit)="onSubmit()">
+    <input [(ngModel)]="searchQuery">
+ </form>-->
+
+ <label>
+    Begriff:
+    <input type="text" [formControl]="searchQuery">
+  </label>
+
+<!--<input type="text" id="searchQuery">-->
 <button (click)="getSynonyms()">GET SYNONYMS</button>
 
 <!--<div class="container d-none" id='container'> Es wurden
