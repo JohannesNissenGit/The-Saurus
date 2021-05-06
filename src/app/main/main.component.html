@@ -4,7 +4,14 @@
     <div id="synonymsAmount">&nbsp; keine &nbsp;</div>
     Synonym-Sets gefunden. </div>-->
 
-    <div id="container" class="container d-none">Es wurden
+    <div id="container" class="container d-none"> <h2> Es wurden
         {{synonymsAmount}}
-        Synonym-Sets gefunden. </div>
+        gefunden. </h2> </div>
+
+        <div *ngFor="let item of synsets; let i = index">
+          <h2>  Synonym-Set mit ID {{item.id}}  </h2>
+        <div  *ngFor="let array of item.terms; let j = index">
+            {{array.term}}
+        </div>
+    </div>
 
