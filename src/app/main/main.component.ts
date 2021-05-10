@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
+  
   async getSynonyms() {
     this.query = this.searchQuery.value;
     let url = 'https://www.openthesaurus.de/synonyme/search?q=' + this.query + '&format=application/json'; //load from server
